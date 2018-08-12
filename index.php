@@ -68,7 +68,7 @@ function pre_r($array){
 ?>
 <div class="container" style="max-width:100% !important;">
     <div class="container-fluid maggeonly">
-            <div class="row" style="margin-top:5px">
+            <div class="row" style="margin-top:10px; background-color:lavender;">
 
 <?php
   $query = 'SELECT * FROM products ORDER by id ASC';
@@ -81,7 +81,7 @@ function pre_r($array){
         <div class="col-sm-4 col-md-3" >
                     <form method="post" action="index.php?action=add&id=<?php echo $product['id']; ?>">
                         <div class="products">
-                            <img src="<?php echo $product['image']; ?>" class="img-fluid" />
+                           <img style="margin-top: 10px" src="<?php echo $product['image']; ?>" class="img-fluid" />
                             <h4 class="text-info"><?php echo $product['name']; ?></h4>
                             <h4> <?php echo $product['price']; ?>kr +pant</h4>
                           <p class="text-grey">Warning this product barely increase mental or pysical preformance. This product can also cause harm to your health</p>
