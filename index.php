@@ -87,6 +87,7 @@ function pre_r($array){
                             <input type="text" name="quantity" class="form-control" value="1" />
                             <input type="hidden" name="name" value="<?php echo $product['name']; ?>" />
                             <input type="hidden" name="price" value="<?php echo $product['price']; ?>" />
+                          <p>Warning this product barely increase mental or pysical preformance. This product can also cause harm to your health</p>
                             <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info"
                                    value="Add to Cart" />
                         </div>
