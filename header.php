@@ -18,9 +18,9 @@
 .fonttext{
   font-size: 112%
 }
-@media screen and (min-width: 76px) and  (max-width: 768px) {
+media screen and (min-width: 76px) and  (max-width: 768px) {
   body {
-    background-color: pink;
+    background-color: orange;
   
   }
   .sides{
@@ -35,15 +35,13 @@
   
 @media screen and (min-width: 768px) and  (max-width: 992px) {
   body {
-    background-color:
+    background-color: yellowgreen;
   }
-  
 }
 @media screen and (min-width: 992px) {
   body {
-    background-color: grey
+    background-color: yellowgreen;
   }
-
 }
 @media screen and (min-width: 1200px) {
   body {
