@@ -18,7 +18,7 @@
 .fonttext{
   font-size: 112%
 }
-media screen and (min-width: 76px) and  (max-width: 768px) {
+@media screen and (min-width: 76px) and  (max-width: 768px) {
   body {
     background-color: orange;
   
@@ -216,8 +216,11 @@ media screen and (min-width: 76px) and  (max-width: 768px) {
         <div style="clear:both"></div>  
         <br />  
         <div class="table-responsive">  
-        <table class="table">  
-            
+        <table class="table">
+
+
+        <!--här börjar containern-->  
+  
         
         <?php   
         if(!empty($_SESSION['shopping_cart'])):  
@@ -226,18 +229,30 @@ media screen and (min-width: 76px) and  (max-width: 768px) {
         
              foreach($_SESSION['shopping_cart'] as $key => $product): 
         ?>  
-        
-           <img src="<?php echo $product['image']; ?>" class="img-fluid img-fluid-cart" />
-           <?php echo $product['name']; ?>  
+              <div class="container" style="max-width:100% !important;">
+    <div class="container-fluid">
+    <div class="row" style="margin-top:5px">
+           <img src="<?php echo $product['image']; ?>" height="130px" width="132px" class="img-fluid img-fluid-cart col-md-3" />
+           <div class="col-md-6"> <?php echo $product['name']; ?> 
+             </br>
            <?php echo $product['quantity']; ?>/st 
-           <?php echo $product['price']; ?>  
-           <?php echo number_format($product['quantity'] * $product['price'], 2); ?>  
-           
+           </br>
+           </br>
+           <?php echo $product['price']; ?> KR/st
+           </br>
+           </br>
+          <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr
+           </div> 
+           <div class="col-md-3">
                <a href="index.php?action=delete&id=<?php echo $product['id']; ?>">
                     <div class="btn btn-danger btn-cart">Remove</div>
                </a>
          <br>
          <br>
+         </div>
+         </div>
+         </div>
+         </div>
         <?php  
                   $total = $total + ($product['quantity'] * $product['price']);  
              endforeach;  

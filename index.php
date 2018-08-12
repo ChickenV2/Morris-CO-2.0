@@ -16,7 +16,7 @@ session_start();
     if(mysqli_num_rows($result)>0):
       while($product = mysqli_fetch_assoc($result)):
         ?>
-        <div class="col-sm-4 col-md-3" >
+        <div class="col-md-6 col-lg-4 col-xl-3" style="padding:7px;">
                     <form method="post" action="index.php?action=add&id=<?php echo $product['id']; ?>">
                         <div class="products">
                             <img src="<?php echo $product['image']; ?>" class="img-fluid" />
@@ -29,6 +29,7 @@ session_start();
                              <input type="hidden" name="image" value="<?php echo $product['image']; ?>" />
                             <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info"
                                    value="Add to Cart" />
+                                   <a href="kiwibuy.html" class="btn btn-primary" style="margin-top:5px;">product info</a>
                         </div>
           </form>
         </div>
