@@ -73,6 +73,12 @@ media screen and (min-width: 76px) and  (max-width: 768px) {
     color: #323232;
     font-size: 12px;
 }
+.img-fluid-cart {
+  height: 20%;
+}
+.btn-cart {
+  float: right;
+}
 
   </style>
   </head>
@@ -148,63 +154,116 @@ media screen and (min-width: 76px) and  (max-width: 768px) {
         </div>
         <div class="modal-body">
 <!-- Här börjar carten -->
+       <?php
 
-        <!-- Product #2 -->
-        <div class="item">
-          <div class="image">
-            <img src="item-2.png" alt=""/>
-          </div>
-  
-          <div class="description">
-            <span>Maison Fortinis</span>
-            <span>ortens Sneakers</span>
-          </div>
-  
-          <div class="quantity">
-            <button class="plus-bnt" type="button" name="button">
-              <img src="plus.svg" alt="" />
-            </button>
-            <input type="text" name="name" value="1">
-            <button class="minus-bnt" type="button" name="button">
-              <img src="minus.svg" alt="" />
-            </button>
-          </div>
-          <div class="buttons1">
-              <span class="delete-btn1"></span>
-            </div>
-          <div class="total-price">$870</div>
+  $product_ids = array();
+
+  //Kollar ifall Add to cart knabben har blivit tryckt
+  if(filter_input(INPUT_POST, 'add_to_cart')){
+    //Ifall det redan fins en shopping cart
+    if(isset($_SESSION['shopping_cart'])){
+      //Keep track utav hur många saker som finns i shopping cart ,en
+      $count = count($_SESSION['shopping_cart']);
+
+      //För att matcha product id med array key
+      $product_ids = array_column($_SESSION['shopping_cart'], 'id');
+
+      if (!in_array(filter_input(INPUT_GET, 'id'), $product_ids)) {
+        $_SESSION['shopping_cart'][$count] = array(
+        'id' => filter_input(INPUT_GET, 'id'),
+        'name' => filter_input(INPUT_POST, 'name'),
+        'price' => filter_input(INPUT_POST, 'price'),
+        'image' => filter_input(INPUT_POST, 'image'),
+        'quantity' => filter_input(INPUT_POST, 'quantity')
+      );
+      } else { //Produkt finns redan läg då på i cart
+        // matchar arry ken till id på produkten som ska läggas i cart
+        for ($i = 0; $i < count($product_ids); $i++){
+          if ($product_ids[$i] == filter_input(INPUT_GET, 'id')){
+          // Lägger till antal till den redan existerande antalet
+          $_SESSION['shopping_cart'][$i]['quantity'] += filter_input(INPUT_POST, 'quantity');
+          }
+        }
+      }
+
+    }else { //Ifall det inte fins någon shopping cart så gör den en
+      $_SESSION['shopping_cart'][0] = array(
+        'id' => filter_input(INPUT_GET, 'id'),
+        'name' => filter_input(INPUT_POST, 'name'),
+        'price' => filter_input(INPUT_POST, 'price'),
+        'image' => filter_input(INPUT_POST, 'image'),
+        'quantity' => filter_input(INPUT_POST, 'quantity')
+      );
+    }
+  }
+
+
+        if(filter_input(INPUT_GET, 'action') == 'delete'){
+    //loop through all products in the shopping cart until it matches with GET id variable
+    foreach($_SESSION['shopping_cart'] as $key => $product){
+        if ($product['id'] == filter_input(INPUT_GET, 'id')){
+            //remove product from the shopping cart when it matches with the GET id
+            unset($_SESSION['shopping_cart'][$key]);
+        }
+    }
+    //reset session array keys so they match with $product_ids numeric array
+    $_SESSION['shopping_cart'] = array_values($_SESSION['shopping_cart']);
+}
+
+
+        ?>
+        
+        <div style="clear:both"></div>  
+        <br />  
+        <div class="table-responsive">  
+        <table class="table">  
+            
+        
+        <?php   
+        if(!empty($_SESSION['shopping_cart'])):  
+            
+             $total = 0;  
+        
+             foreach($_SESSION['shopping_cart'] as $key => $product): 
+        ?>  
+        
+           <img src="<?php echo $product['image']; ?>" class="img-fluid img-fluid-cart" />
+           <?php echo $product['name']; ?>  
+           <?php echo $product['quantity']; ?>/st 
+           <?php echo $product['price']; ?>  
+           <?php echo number_format($product['quantity'] * $product['price'], 2); ?>  
+           
+               <a href="index.php?action=delete&id=<?php echo $product['id']; ?>">
+                    <div class="btn btn-danger btn-cart">Remove</div>
+               </a>
+         <br>
+         <br>
+        <?php  
+                  $total = $total + ($product['quantity'] * $product['price']);  
+             endforeach;  
+        ?>  
+        <tr>  
+             <td colspan="3" align="right">Total</td>  
+             <td align="right">$ <?php echo number_format($total, 2); ?></td>  
+             <td></td>  
+        </tr>  
+        <tr>
+            <!-- Show checkout button only if the shopping cart is not empty -->
+            <td colspan="5">
+             <?php 
+                if (isset($_SESSION['shopping_cart'])):
+                if (count($_SESSION['shopping_cart']) > 0):
+             ?>
+                <a href="#" class="button">Checkout</a>
+             <?php endif; endif; ?>
+            </td>
+        </tr>
+        <?php  
+        endif;
+        ?>  
+        </table>  
+         </div>
         </div>
-  
-        <!-- Product #3 -->
-        <div class="item">
-
-  
-          <div class="image">
-            <img src="item-3.png" alt="" />
-          </div>
-  
-          <div class="description">
-            <span>Morrans Legacy</span>
-            <span>Brushed Scarf</span>
-          </div>
-  
-          <div class="quantity">
-            <button class="plus-bnt" type="button" name="button">
-              <img src="plus.svg" alt="" />
-            </button>
-            <input type="text" name="name" value="1">
-            <button class="minus-bnt" type="button" name="button">
-              <img src="minus.svg" alt="" />
-            </button>
-          </div>
-          <div class="buttons1">
-              <span class="delete-btn1"></span>
-            </div>
-          <div class="total-price">$349</div>
-        </div>
-      </div>
-
-
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">fortsätt handla</button>
