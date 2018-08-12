@@ -237,7 +237,6 @@
              </br>
            <?php echo $product['quantity']; ?>/st 
            </br>
-           </br>
            <?php echo $product['price']; ?> KR/st
            </br>
            </br>
