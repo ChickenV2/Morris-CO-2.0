@@ -79,6 +79,10 @@
 .btn-cart {
   float: right;
 }
+.Empty-Cart-Text {
+  font-family: ariel;
+  float: center;
+}
 
   </style>
   </head>
@@ -223,11 +227,11 @@
   
         
         <?php   
-        if(!empty($_SESSION['shopping_cart'])):  
+        if(!empty($_SESSION['shopping_cart'])){
             
              $total = 0;  
         
-             foreach($_SESSION['shopping_cart'] as $key => $product): 
+             foreach($_SESSION['shopping_cart'] as $key => $product):
         ?>  
               <div class="container" style="max-width:100% !important;">
     <div class="container-fluid">
@@ -237,7 +241,7 @@
              </br>
            <?php echo $product['quantity']; ?>/st 
            </br>
-           <?php echo $product['price']; ?> KR/st
+           <?php echo $product['price']; ?> Kr/st
            </br>
            </br>
           <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr
@@ -258,7 +262,7 @@
         ?>  
         <tr>  
              <td colspan="3" align="right">Total</td>  
-             <td align="right">$ <?php echo number_format($total, 2); ?></td>  
+             <td align="right"><?php echo number_format($total, 2); ?> Kr</td>  
              <td></td>  
         </tr>  
         <tr>
@@ -268,63 +272,31 @@
                 if (isset($_SESSION['shopping_cart'])):
                 if (count($_SESSION['shopping_cart']) > 0):
              ?>
-                <a href="#" class="button">Checkout</a>
+                <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">fortsätt handla</button>
+          <button type="button" class="btn btn-primary">Gå till kassan</button>
+
+            </div>
              <?php endif; endif; ?>
             </td>
         </tr>
         <?php  
-        endif;
+        } else {
+          ?>
+          <p class="Empty-Cart-Text">Your Shopping cart is empty!</p>
+          <?php
+        }
         ?>  
         </table>  
          </div>
         </div>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">fortsätt handla</button>
-          <button type="button" class="btn btn-primary">Gå till kassan</button>
-
-        </div>
+        
       </div>
     </div>
   </div>
 </div>
 
-
-
-
-
-
-<script type="text/javascript">
-  $('.minus-bnt').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $input = $this.closest('div').find('input');
-    var value = parseInt($input.val());
-
-    if (value > 1) {
-      value = value - 1;
-    } else {
-      value = 0;
-    }
-
-    $input.val(value);
-
-  });
-
-  $('.plus-bnt').on('click', function(e) {
-    e.preventDefault();
-    var $this = $(this);
-    var $input = $this.closest('div').find('input');
-    var value = parseInt($input.val());
-
-    if (value < 100) {
-      value = value + 1;
-    } else {
-      value =100;
-    }
-
-    $input.val(value);
-  });
 </script>
 </body>
 </html>

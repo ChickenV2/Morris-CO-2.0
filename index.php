@@ -29,7 +29,7 @@ session_start();
                              <input type="hidden" name="image" value="<?php echo $product['image']; ?>" />
                             <input type="submit" name="add_to_cart" style="margin-top:5px;" class="btn btn-info"
                                    value="Add to Cart" />
-                                   <a href="kiwibuy.html" class="btn btn-primary" style="margin-top:5px;">product info</a>
+                                   <a href="info/<?php echo $product['info'];?>" class="btn btn-primary" style="margin-top:5px;">product info</a>
                         </div>
           </form>
         </div>
