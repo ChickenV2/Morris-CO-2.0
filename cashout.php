@@ -22,7 +22,8 @@ session_start();
 }
 </style>
 
-
+<div class="container background" style="max-width:100% !important; padding:10px;">
+<div class="container-fluid ">
  <?php   
         if(!empty($_SESSION['shopping_cart'])){
             
@@ -30,10 +31,7 @@ session_start();
         
              foreach($_SESSION['shopping_cart'] as $key => $product):
         ?>  
-	   	 	
-	             <div class="container " style="max-width:100% !important; padding:10px;">
-    <div class="container-fluid Background">
-	    <div class="row" style="margin-top:5px"></div>
+	   	 	</div>
 		<div class="row" style="margin-top:10px; margin-left:2px;">
 	         <img src="<?php echo $product['image']; ?>" height="40%" width="15%" class="img-fluid img-fluid-cart" />
 	       <div class="col-sm-5"> <?php echo $product['name']; ?> 
@@ -52,18 +50,17 @@ session_start();
 				   </div>
 	         <br>
 	         <br>
-	         </div>
-	         </div>
-	         </div>
-	         </div>
+	    
+	    
 	        <?php  
 	                  $total = $total + ($product['quantity'] * $product['price']);  
 	             endforeach;  
 	        ?>  
+			</div>
 	        <tr>  
-	             <td colspan="3" align="right">Total</td>  
+	             <td colspan="3" align="right"><h5> Total </td>  
 	             <td align="right"><?php echo number_format($total, 2); ?> Kr</td>  
-	             <td></td>  
+	             <td></td>  </h5>
 	        </tr>  
 	        <tr>
 	            <!-- Show checkout button only if the shopping cart is not empty -->
@@ -73,8 +70,33 @@ session_start();
 	                if (count($_SESSION['shopping_cart']) > 0):
 	             ?>
 	                <div class="modal-footer">
-	          <button type="button" class="btn btn-primary" data-dismiss="checkout">Proceed to checkout</button>
-	         
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bobodada"> pay</button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="bobodada">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Instruktioner</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
 
 	            </div>
 	             <?php endif; endif; ?>

@@ -83,7 +83,6 @@
   font-family: ariel;
   float: center;
 }
-
   </style>
   </head>
   <body>
@@ -94,7 +93,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
        
-          <a class="navbar-brand" style="margin-right: 10px" href="#">   <img src="icononly.png" width="30" height="30" class="d-inline-block align-top" alt=""> Morris & co shop</a>
+          <a class="navbar-brand" style="margin-right: 10px" href="index.html">   <img src="icononly.png" width="30" height="30" class="d-inline-block align-top" alt=""> Morris & co shop</a>
           
           <!-- Links -->
        
@@ -148,7 +147,7 @@
 </div>
 <!-- Modal when you press on cart -->
 
-<div class="modal fade" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">awerhqerh
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -160,19 +159,15 @@
         <div class="modal-body">
 <!-- Här börjar carten -->
        <?php
-
   $product_ids = array();
-
   //Kollar ifall Add to cart knabben har blivit tryckt
   if(filter_input(INPUT_POST, 'add_to_cart')){
     //Ifall det redan fins en shopping cart
     if(isset($_SESSION['shopping_cart'])){
       //Keep track utav hur många saker som finns i shopping cart ,en
       $count = count($_SESSION['shopping_cart']);
-
       //För att matcha product id med array key
       $product_ids = array_column($_SESSION['shopping_cart'], 'id');
-
       if (!in_array(filter_input(INPUT_GET, 'id'), $product_ids)) {
         $_SESSION['shopping_cart'][$count] = array(
         'id' => filter_input(INPUT_GET, 'id'),
@@ -190,7 +185,6 @@
           }
         }
       }
-
     }else { //Ifall det inte fins någon shopping cart så gör den en
       $_SESSION['shopping_cart'][0] = array(
         'id' => filter_input(INPUT_GET, 'id'),
@@ -201,8 +195,6 @@
       );
     }
   }
-
-
         if(filter_input(INPUT_GET, 'action') == 'delete'){
     //loop through all products in the shopping cart until it matches with GET id variable
     foreach($_SESSION['shopping_cart'] as $key => $product){
@@ -214,8 +206,6 @@
     //reset session array keys so they match with $product_ids numeric array
     $_SESSION['shopping_cart'] = array_values($_SESSION['shopping_cart']);
 }
-
-
         ?>
         
         <div style="clear:both"></div>  
@@ -301,4 +291,3 @@
 </script>
 </body>
 </html>
-
