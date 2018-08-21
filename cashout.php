@@ -2,7 +2,6 @@
 session_start();
   include_once "header.php";
   include_once "includes/dbh.inc.php";
-
         if(filter_input(INPUT_GET, 'action') == 'delete'){
     //loop through all products in the shopping cart until it matches with GET id variable
     foreach($_SESSION['shopping_cart'] as $key => $product){
@@ -14,8 +13,6 @@ session_start();
     //reset session array keys so they match with $product_ids numeric array
     $_SESSION['shopping_cart'] = array_values($_SESSION['shopping_cart']);
 }
-
-
 ?>
 <style>
 .Background {
@@ -23,7 +20,6 @@ session_start();
 	width: 100%;
 	height: 100%;
 }
-
 </style>
 
 
@@ -34,12 +30,13 @@ session_start();
         
              foreach($_SESSION['shopping_cart'] as $key => $product):
         ?>  
-	 	 	
+	   	 	
 	             <div class="container " style="max-width:100% !important; padding:10px;">
     <div class="container-fluid Background">
-	    <div class="row" style="margin-top:5px">
-	         <img src="<?php echo $product['image']; ?>" height="40%" width="18%" class="img-fluid img-fluid-cart" />
-	       <div class="col-md-3"> <?php echo $product['name']; ?> 
+	    <div class="row" style="margin-top:5px"></div>
+		<div class="row" style="margin-top:10px; margin-left:2px;">
+	         <img src="<?php echo $product['image']; ?>" height="40%" width="15%" class="img-fluid img-fluid-cart" />
+	       <div class="col-sm-5"> <?php echo $product['name']; ?> 
 	             </br>
 	           <?php echo $product['quantity']; ?>/st 
 	           </br>
@@ -48,10 +45,11 @@ session_start();
 	           </br>
 	          <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr
 	           </div> 
-         <div class="col-md-2">
+         <div class="col-sm-5">
 	               <a href="cashout.php?action=delete&id=<?php echo $product['id']; ?>">
 	                    <div class="btn btn-danger btn-cart">Remove</div>
 	               </a>
+				   </div>
 	         <br>
 	         <br>
 	         </div>
