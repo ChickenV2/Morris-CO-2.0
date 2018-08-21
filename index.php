@@ -23,7 +23,11 @@ session_start();
                             <h4 class="text-info"><?php echo $product['name']; ?></h4>
                             <h4> <?php echo $product['price']; ?>kr +pant</h4>
                           <p class="text-grey">Warning this product barely increase mental or pysical preformance. This product can also cause harm to your health</p>
-                            <input type="text" name="quantity" class="form-control" value="1" />
+                              <select name="quantity" class="form-control" value="1">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3<option>
+                              </select>
                             <input type="hidden" name="name" value="<?php echo $product['name']; ?>" />
                             <input type="hidden" name="price" value="<?php echo $product['price']; ?>" />
                              <input type="hidden" name="image" value="<?php echo $product['image']; ?>" />
