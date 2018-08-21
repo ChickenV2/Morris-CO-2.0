@@ -26,7 +26,7 @@ session_start();
 	    <div class="container-fluid">
 	    <div class="row" style="margin-top:5px">
 	           <img src="<?php echo $product['image']; ?>" height="20%" width="8%" class="img-fluid img-fluid-cart" />
-	           <div class="col-md-6"> <?php echo $product['name']; ?> 
+	           <div class="col-md-3"> <?php echo $product['name']; ?> 
 	             </br>
 	           <?php echo $product['quantity']; ?>/st 
 	           </br>
@@ -35,7 +35,7 @@ session_start();
 	           </br>
 	          <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr
 	           </div> 
-	           <div class="col-md-3">
+	           <div class="col-md-2">
 	               <a href="index.php?action=delete&id=<?php echo $product['id']; ?>">
 	                    <div class="btn btn-danger btn-cart">Remove</div>
 	               </a>
