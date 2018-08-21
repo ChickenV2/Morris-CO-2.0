@@ -139,7 +139,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Fortsätt Handla</button>
-          <button type="button" class="btn btn-primary">Gå till kassan</button>
+           <a href="cashout.php" class="btn btn-primary" style="margin-top:5px;">Gå till kassan</a>
+          <button type="button" class="btn btn-primary" >Gå till kassan</button>
         </div>
       </div>
     </div>
@@ -274,7 +275,7 @@
              ?>
                 <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">fortsätt handla</button>
-          <button type="button" class="btn btn-primary">Gå till kassan</button>
+         <a href="cashout.php" class="btn btn-primary" style="margin-top:5px;">Gå till kassan</a>
 
             </div>
              <?php endif; endif; ?>
