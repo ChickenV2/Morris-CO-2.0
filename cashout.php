@@ -34,20 +34,22 @@ session_start();
 	   	 	</div>
 		<div class="row" style="margin-top:10px; margin-left:2px;">
 	         <img src="<?php echo $product['image']; ?>" height="40%" width="15%" class="img-fluid img-fluid-cart" />
-	       <div class="col-sm-5"> <?php echo $product['name']; ?> 
+			 <div class="col-xs-5"> <?php echo $product['name']; ?>
 	             </br>
-	           <?php echo $product['quantity']; ?>/st 
+				 <p><?php echo $product['quantity']; ?>/st 
 	           </br>
-	           <?php echo $product['price']; ?> Kr/st
+	           <?php echo $product['price']; ?> Kr/st 
 	           </br>
 	           </br>
-	          <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr
-	           </div> 
-         <div class="col-sm-5">
+			    <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr</P>
+			  </div>
+			  <div class="col-xs-1">
 	               <a href="cashout.php?action=delete&id=<?php echo $product['id']; ?>">
 	                    <div class="btn btn-danger btn-cart">Remove</div>
 	               </a>
 				   </div>
+				   <div class="col-xs-2">
+				   </div> 
 	         <br>
 	         <br>
 	    
@@ -70,7 +72,7 @@ session_start();
 	                if (count($_SESSION['shopping_cart']) > 0):
 	             ?>
 	                <div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#bobodada"> pay</button>
+					<div class="btn btn-primary float-right fixed-bottom" data-toggle="modal" data-target="#bobodada"> pay & confirm order</div>
 
   <!-- The Modal -->
   <div class="modal fade" id="bobodada">

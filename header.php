@@ -18,6 +18,23 @@
 .fonttext{
   font-size: 112%
 }
+@media screen and (min-width: 26px) and  (max-width: 768px) {
+  body {
+    background-color:red;
+  
+  }
+  .sides{
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+    .imgh{
+      height: 400px;
+    }
+    p {
+    font-size: 9px;
+}
+  
+  }
 @media screen and (min-width: 76px) and  (max-width: 768px) {
   body {
     background-color: orange;
