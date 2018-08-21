@@ -34,7 +34,7 @@ session_start();
         
              foreach($_SESSION['shopping_cart'] as $key => $product):
         ?>  
-	   <div class="Background">   	 	
+	 	 	
 	             <div class="container " style="max-width:100% !important; padding:10px;">
     <div class="container-fluid Background">
 	    <div class="row" style="margin-top:5px">
