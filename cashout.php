@@ -35,11 +35,11 @@ session_start();
              foreach($_SESSION['shopping_cart'] as $key => $product):
         ?>  
 	   <div class="Background">   	 	
-	              <div class="container" style="max-width:100% !important;">
-	    <div class="container-fluid">
+	             <div class="container " style="max-width:100% !important; padding:10px;">
+    <div class="container-fluid Background">
 	    <div class="row" style="margin-top:5px">
-	           <img src="<?php echo $product['image']; ?>" height="20%" width="8%" class="img-fluid img-fluid-cart" />
-	           <div class="col-md-6"> <?php echo $product['name']; ?> 
+	         <img src="<?php echo $product['image']; ?>" height="40%" width="18%" class="img-fluid img-fluid-cart" />
+	       <div class="col-md-3"> <?php echo $product['name']; ?> 
 	             </br>
 	           <?php echo $product['quantity']; ?>/st 
 	           </br>
@@ -48,7 +48,7 @@ session_start();
 	           </br>
 	          <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr
 	           </div> 
-	           <div class="col-md-3">
+         <div class="col-md-2">
 	               <a href="cashout.php?action=delete&id=<?php echo $product['id']; ?>">
 	                    <div class="btn btn-danger btn-cart">Remove</div>
 	               </a>
