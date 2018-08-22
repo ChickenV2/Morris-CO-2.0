@@ -18,8 +18,13 @@ session_start();
 .Background {
 	background-color: white;
 	width: 100%;
-	height: 100%;
+	height: auto;
+	min-height:1000px;
 }
+img{
+    max-width:140px;
+}
+
 </style>
 
 <div class="container background" style="max-width:100% !important; padding:10px;">
@@ -33,8 +38,8 @@ session_start();
         ?>  
 	   	 	</div>
 		<div class="row" style="margin-top:10px; margin-left:2px;">
-	         <img src="<?php echo $product['image']; ?>" height="40%" width="15%" class="img-fluid img-fluid-cart" />
-			 <div class="col-xs-5"> <?php echo $product['name']; ?>
+	         <img src="<?php echo $product['image']; ?>" width="15%" class=" img-fluid-cart" />
+			 <div class="col-xs-5 breaker"> <?php echo $product['name']; ?>
 	             </br>
 				 <p><?php echo $product['quantity']; ?>/st 
 	           </br>
@@ -45,7 +50,7 @@ session_start();
 			  </div>
 			  <div class="col-xs-1">
 	               <a href="cashout.php?action=delete&id=<?php echo $product['id']; ?>">
-	                    <div class="btn btn-danger btn-cart">Remove</div>
+	                    <div class="btn btn-danger btn-cart float-sm-right">Remove</div>
 	               </a>
 				   </div>
 				   <div class="col-xs-2">
@@ -72,8 +77,10 @@ session_start();
 	                if (count($_SESSION['shopping_cart']) > 0):
 	             ?>
 	                <div class="modal-footer">
+									
 					<div class="btn btn-primary float-right fixed-bottom" data-toggle="modal" data-target="#bobodada"> pay & confirm order</div>
-
+					</div> 
+									</div> 
   <!-- The Modal -->
   <div class="modal fade" id="bobodada">
     <div class="modal-dialog modal-lg">
@@ -87,12 +94,23 @@ session_start();
         
         <!-- Modal body -->
         <div class="modal-body">
-          Modal body..
+				<!-- PHP MAGIC MARTINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN -->
+				<dt>Hej "namn" </dt>
+					<br>
+					swisha till <font color="blue">0767888844</font><br>
+				<!-- PHP MAGIC MARTINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN -->
+					denna summa pengar "summa"<br>
+				<!-- PHP MAGIC MARTINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN -->
+					På meddelande skriv denna kod: <mark><abbr title="Ditt kundnummer så vi vet att de är din betalning">07685932GHWT</abbr></mark><br>
+					<br>
+					<h5>Viktigt!</h5><br>
+					<font color="red">Klicka sedan på ready på våran hemsida och vänta i 10 sekunder och sedan skicka iväg din swish</font></p>
         </div>
         
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">avbryt</button>
+					<button type="button" class="btn btn-success" data-dismiss="modal">ready</button>
         </div>
         
       </div>

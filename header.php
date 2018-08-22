@@ -18,7 +18,7 @@
 .fonttext{
   font-size: 112%
 }
-@media screen and (min-width: 26px) and  (max-width: 768px) {
+@media screen and (min-width: 16px) and  (max-width: 76px) {
   body {
     background-color:red;
   
@@ -32,6 +32,13 @@
     }
     p {
     font-size: 9px;
+}
+.breaker{
+  width: 173px;
+}
+.img-fluid-cart {
+  height: 13%;
+  min-width:70px;
 }
   
   }
@@ -47,23 +54,47 @@
     .imgh{
       height: 400px;
     }
-  
+    .breaker{
+  width: 173px;
+}
+.img-fluid-cart {
+  height: 18%;
+  min-width:70px;
+}
   }
   
 @media screen and (min-width: 768px) and  (max-width: 992px) {
   body {
     background-color: yellowgreen;
   }
+  .breaker{
+  width: 210px;
+}
+.img-fluid-cart {
+  height: 21%;
+}
 }
 @media screen and (min-width: 992px) {
   body {
     background-color: yellowgreen;
   }
+  .breaker{
+  width: 350px;
+}
+.img-fluid-cart {
+  height: 21%;
+}
 }
 @media screen and (min-width: 1200px) {
   body {
     background-color: yellowgreen;
   }
+  .breaker{
+  width: 500px;
+}
+.img-fluid-cart {
+  height: 21%;
+}
 }
 .top-cart a .cartCount {
     background: #e95144!important;
@@ -89,9 +120,6 @@
     /* letter-spacing: 0.02em; */
     color: #323232;
     font-size: 12px;
-}
-.img-fluid-cart {
-  height: 20%;
 }
 .btn-cart {
   float: right;
@@ -233,53 +261,55 @@
 
         <!--här börjar containern-->  
   
-        
-        <?php   
+        <div class="container background" style="max-width:100% !important; padding:10px;">
+<div class="container-fluid ">
+ <?php   
         if(!empty($_SESSION['shopping_cart'])){
             
              $total = 0;  
         
              foreach($_SESSION['shopping_cart'] as $key => $product):
         ?>  
-              <div class="container" style="max-width:100% !important;">
-    <div class="container-fluid">
-    <div class="row" style="margin-top:5px">
-           <img src="<?php echo $product['image']; ?>" height="130px" width="132px" class="img-fluid img-fluid-cart col-md-3" />
-           <div class="col-md-6"> <?php echo $product['name']; ?> 
-             </br>
-           <?php echo $product['quantity']; ?>/st 
-           </br>
-           <?php echo $product['price']; ?> Kr/st
-           </br>
-           </br>
-          <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr
-           </div> 
-           <div class="col-md-3">
-               <a href="index.php?action=delete&id=<?php echo $product['id']; ?>">
-                    <div class="btn btn-danger btn-cart">Remove</div>
-               </a>
-         <br>
-         <br>
-         </div>
-         </div>
-         </div>
-         </div>
-        <?php  
-                  $total = $total + ($product['quantity'] * $product['price']);  
-             endforeach;  
-        ?>  
-        <tr>  
-             <td colspan="3" align="right">Total</td>  
-             <td align="right"><?php echo number_format($total, 2); ?> Kr</td>  
-             <td></td>  
-        </tr>  
-        <tr>
-            <!-- Show checkout button only if the shopping cart is not empty -->
-            <td colspan="5">
-             <?php 
-                if (isset($_SESSION['shopping_cart'])):
-                if (count($_SESSION['shopping_cart']) > 0):
-             ?>
+	   	 	</div>
+		<div class="row" style="margin-top:10px; margin-left:2px;">
+	         <img src="<?php echo $product['image']; ?>" width="15%" class=" img-fluid-cart" />
+			 <div class="col-xs-5 breaker"> <?php echo $product['name']; ?>
+	             </br>
+				 <p><?php echo $product['quantity']; ?>/st 
+	           </br>
+	           <?php echo $product['price']; ?> Kr/st 
+	           </br>
+	           </br>
+			    <?php echo $product['name']; ?> : <?php echo number_format($product['quantity'] * $product['price'], 2); ?>kr</P>
+			  </div>
+			  <div class="col-xs-1">
+	               <a href="cashout.php?action=delete&id=<?php echo $product['id']; ?>">
+	                    <div class="btn btn-danger btn-cart float-sm-right">Remove</div>
+	               </a>
+				   </div>
+				   <div class="col-xs-2">
+				   </div> 
+	         <br>
+	         <br>
+	    
+	    
+	        <?php  
+	                  $total = $total + ($product['quantity'] * $product['price']);  
+	             endforeach;  
+	        ?>  
+			</div>
+	        <tr>  
+	             <td colspan="3" align="right"><h5> Total </td>  
+	             <td align="right"><?php echo number_format($total, 2); ?> Kr</td>  
+	             <td></td>  </h5>
+	        </tr>  
+	        <tr>
+	            <!-- Show checkout button only if the shopping cart is not empty -->
+	            <td colspan="5">
+	             <?php 
+	                if (isset($_SESSION['shopping_cart'])):
+	                if (count($_SESSION['shopping_cart']) > 0):
+	             ?>
                 <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">fortsätt handla</button>
          <a href="cashout.php" class="btn btn-primary" style="margin-top:5px;">Gå till kassan</a>
