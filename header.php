@@ -7,6 +7,7 @@
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+         <link rel="stylesheet" href="Egenmodal design.css" media="screen" title="no title" charset="utf-8">
   <style>
     .norder{
     margin-top:5px; 
@@ -138,7 +139,7 @@
               <span class="navbar-toggler-icon"></span>
             </button>
        
-          <a class="navbar-brand" style="margin-right: 10px" href="index.html">   <img src="icononly.png" width="30" height="30" class="d-inline-block align-top" alt=""> Morris & co shop</a>
+          <a class="navbar-brand" style="margin-right: 10px" href="index.php">   <img src="icononly.png" width="30" height="30" class="d-inline-block align-top" alt=""> Morris & co shop</a>
           
           <!-- Links -->
        
@@ -261,7 +262,7 @@
 
         <!--här börjar containern-->  
   
-        <div class="container background" style="max-width:100% !important; padding:10px;">
+        <div class="container background" style="max-width:100% !important; padding:2px;">
 <div class="container-fluid ">
  <?php   
         if(!empty($_SESSION['shopping_cart'])){
@@ -271,7 +272,7 @@
              foreach($_SESSION['shopping_cart'] as $key => $product):
         ?>  
 	   	 	</div>
-		<div class="row" style="margin-top:10px; margin-left:2px;">
+		<div class="row" style="margin-top:10px; margin-left:1px;">
 	         <img src="<?php echo $product['image']; ?>" width="15%" class=" img-fluid-cart" />
 			 <div class="col-xs-5 breaker"> <?php echo $product['name']; ?>
 	             </br>
